@@ -9,19 +9,20 @@ const MovieList = props => {
         .get('http://localhost:5000/api/movies')
         .then(response => {
           setMovies(response.data);
+          console.log('get data',  response.data)
         })
         .catch(error => {
           console.error('Server Error', error);
         });
     }
-    
+
     getMovies();
   }, []);
   
   return (
     <div className="movie-list">
       {movies.map(movie => (
-        <Link to={'/MovieList/'}>
+        <Link to='/Movies/Movie/'>
         <MovieDetails key={movie.id} movie={movie} />
         </Link>
       ))}
